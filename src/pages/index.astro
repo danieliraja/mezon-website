@@ -1,16 +1,30 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
+<Layout title="Mezon — Home">
+  <Hero />
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section class="container mx-auto px-6 py-12 text-white">
+    <h2 class="text-3xl font-bold mb-6">Nossos Serviços</h2>
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="p-6 rounded-2xl bg-gradient-to-br color-sky-blue color-turquoise">
+        <h3 class="text-xl font-semibold mb-2">Desenvolvimento Web</h3>
+        <p>Aplicações performáticas, escaláveis e seguras.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-white color-deep-teal shadow">
+        <h3 class="text-xl font-semibold mb-2">Aplicativos & PWA</h3>
+        <p>Experiência nativa + web híbrida.</p>
+      </div>
+      <div class="p-6 rounded-2xl color-deep-teal">
+        <h3 class="text-xl font-semibold mb-2">Consultoria Técnica</h3>
+        <p>Arquitetura, segurança, otimização.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold mb-4 text-white">Portfólio Exemplos</h2>
+    <p class="text-white/80">Aqui vai um grid com seus cases reais.</p>
+  </section>
+</Layout>

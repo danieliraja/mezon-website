@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Mezon — Serviços">
+  <section class="container mx-auto px-6 py-16">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Nossos Serviços</h2>
+      <p class="text-light-cyan text-lg max-w-2xl mx-auto">
+        Soluções completas para transformar sua visão em realidade digital
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Desenvolvimento Web -->
+      <article class="bg-marian-blue rounded-lg p-8 border border-honolulu-blue/30 hover:border-pacific-cyan transition-colors">
+        <div class="w-12 h-12 bg-pacific-cyan rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-federal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-4 text-white">Desenvolvimento Web</h3>
+        <p class="text-light-cyan mb-6">
+          Aplicações web modernas e responsivas com as melhores tecnologias do mercado. React, Next.js, Astro e muito mais.
+        </p>
+        <ul class="space-y-2 text-non-photo-blue">
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Single Page Applications (SPA)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>E-commerce e Marketplaces</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Dashboards e Painéis Admin</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Mobile / PWA -->
+      <article class="bg-marian-blue rounded-lg p-8 border border-honolulu-blue/30 hover:border-pacific-cyan transition-colors">
+        <div class="w-12 h-12 bg-pacific-cyan rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-federal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-4 text-white">Mobile / PWA</h3>
+        <p class="text-light-cyan mb-6">
+          Aplicativos nativos e Progressive Web Apps que funcionam em qualquer dispositivo, online ou offline.
+        </p>
+        <ul class="space-y-2 text-non-photo-blue">
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Apps nativos iOS e Android</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Progressive Web Apps (PWA)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>React Native e Flutter</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Consultoria & Arquitetura -->
+      <article class="bg-marian-blue rounded-lg p-8 border border-honolulu-blue/30 hover:border-pacific-cyan transition-colors">
+        <div class="w-12 h-12 bg-pacific-cyan rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-federal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-4 text-white">Consultoria & Arquitetura</h3>
+        <p class="text-light-cyan mb-6">
+          Análise técnica, definição de arquitetura escalável e melhores práticas para seu projeto crescer sem limites.
+        </p>
+        <ul class="space-y-2 text-non-photo-blue">
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Arquitetura de sistemas</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Code Review e Refatoração</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>DevOps e Cloud (AWS, Azure)</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- API Development -->
+      <article class="bg-marian-blue rounded-lg p-8 border border-honolulu-blue/30 hover:border-pacific-cyan transition-colors">
+        <div class="w-12 h-12 bg-pacific-cyan rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-federal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-4 text-white">APIs & Backend</h3>
+        <p class="text-light-cyan mb-6">
+          Desenvolvimento de APIs robustas, escaláveis e seguras para integrar todos os seus sistemas.
+        </p>
+        <ul class="space-y-2 text-non-photo-blue">
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>REST e GraphQL APIs</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Microserviços</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Integrações com terceiros</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- UI/UX Design -->
+      <article class="bg-marian-blue rounded-lg p-8 border border-honolulu-blue/30 hover:border-pacific-cyan transition-colors">
+        <div class="w-12 h-12 bg-pacific-cyan rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-federal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-4 text-white">UI/UX Design</h3>
+        <p class="text-light-cyan mb-6">
+          Design centrado no usuário, interfaces intuitivas e experiências memoráveis que convertem.
+        </p>
+        <ul class="space-y-2 text-non-photo-blue">
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Prototipagem e Wireframes</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Design Systems</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Testes de Usabilidade</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Manutenção e Suporte -->
+      <article class="bg-marian-blue rounded-lg p-8 border border-honolulu-blue/30 hover:border-pacific-cyan transition-colors">
+        <div class="w-12 h-12 bg-pacific-cyan rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-federal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold mb-4 text-white">Manutenção e Suporte</h3>
+        <p class="text-light-cyan mb-6">
+          Suporte contínuo, correções, atualizações e evolução do seu produto digital.
+        </p>
+        <ul class="space-y-2 text-non-photo-blue">
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Monitoramento 24/7</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Correções e Hotfixes</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-vivid-sky-blue mr-2">✓</span>
+            <span>Atualizações de segurança</span>
+          </li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="mt-20 text-center bg-gradient-to-r from-honolulu-blue to-pacific-cyan rounded-2xl p-12">
+      <h3 class="text-3xl font-bold mb-4 text-white">Pronto para começar?</h3>
+      <p class="text-light-cyan mb-8 max-w-xl mx-auto">
+        Entre em contato e vamos conversar sobre como podemos ajudar seu projeto a decolar
+      </p>
+      <a href="/contact" class="inline-block px-8 py-4 bg-white text-federal-blue font-semibold rounded-full hover:shadow-xl transition-shadow">
+        Solicitar Orçamento
+      </a>
+    </div>
+  </section>
+</Layout>

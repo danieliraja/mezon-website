@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  /* Refreshing Summer Fun Palette */
+  --color-sky-blue: #8ecae6;
+  --color-turquoise: #219ebc;
+  --color-deep-teal: #023047;
+  --color-honey: #ffb703;
+  --color-orange: #fb8500;
+
+  /* Aliases para facilitar o uso */
+  --color-primary: #219ebc;
+  --color-secondary: #ffb703;
+  --color-dark: #023047;
+  --color-light: #8ecae6;
+  --color-accent: #fb8500;
+}
