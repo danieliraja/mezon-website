@@ -5,26 +5,89 @@ import Hero from '../components/Hero.astro';
 <Layout title="Mezon — Home">
   <Hero />
 
-  <section class="container mx-auto px-6 py-12 text-white">
-    <h2 class="text-3xl font-bold mb-6">Nossos Serviços</h2>
-    <div class="grid gap-6 md:grid-cols-3">
-      <div class="p-6 rounded-2xl bg-gradient-to-br color-sky-blue color-turquoise">
-        <h3 class="text-xl font-semibold mb-2">Desenvolvimento Web</h3>
-        <p>Aplicações performáticas, escaláveis e seguras.</p>
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="text-3xl font-semibold text-slate-50 md:text-4xl">Nossos Serviços</h2>
+        <p class="mt-2 max-w-xl text-slate-400">
+          Estratégia, design e engenharia trabalhando juntos para construir produtos digitais que passam confiança desde o
+          primeiro contato.
+        </p>
       </div>
-      <div class="p-6 rounded-2xl bg-white color-deep-teal shadow">
-        <h3 class="text-xl font-semibold mb-2">Aplicativos & PWA</h3>
-        <p>Experiência nativa + web híbrida.</p>
+      <a
+        href="/services"
+        class="inline-flex items-center justify-center rounded-full border border-slate-700/80 bg-slate-900/60 px-5 py-2 text-sm font-semibold text-slate-200 transition hover:border-sky-400/60 hover:text-sky-200"
+      >
+        Conheça o portfólio completo
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <div class="group relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-900/60 p-8 transition-transform hover:-translate-y-1">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/10 text-sky-300">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </div>
+        <h3 class="mt-6 text-xl font-semibold text-slate-100">Desenvolvimento Web</h3>
+        <p class="mt-3 text-sm text-slate-400">
+          Aplicações performáticas, escaláveis e seguras com foco em experiência e confiabilidade.
+        </p>
+        <div class="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+          <span>SPA • E-commerce • Dashboards</span>
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-sky-500 via-sky-400 to-sky-500 opacity-0 transition group-hover:opacity-100"></span>
       </div>
-      <div class="p-6 rounded-2xl color-deep-teal">
-        <h3 class="text-xl font-semibold mb-2">Consultoria Técnica</h3>
-        <p>Arquitetura, segurança, otimização.</p>
+
+      <div class="group relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-900/60 p-8 transition-transform hover:-translate-y-1">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/10 text-sky-300">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 9h6m-6 4h4" />
+          </svg>
+        </div>
+        <h3 class="mt-6 text-xl font-semibold text-slate-100">Aplicativos & PWA</h3>
+        <p class="mt-3 text-sm text-slate-400">
+          Experiências móveis fluidas com tecnologia híbrida ou nativa, prontas para escalar.
+        </p>
+        <div class="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+          <span>Native • Flutter • React Native</span>
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-sky-500 via-sky-400 to-sky-500 opacity-0 transition group-hover:opacity-100"></span>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-900/60 p-8 transition-transform hover:-translate-y-1">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/10 text-sky-300">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h8M8 11h6m-6 4h4" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h.01M4 11h.01M4 15h.01M20 7h.01M20 11h.01M20 15h.01" />
+          </svg>
+        </div>
+        <h3 class="mt-6 text-xl font-semibold text-slate-100">Consultoria Técnica</h3>
+        <p class="mt-3 text-sm text-slate-400">
+          Arquitetura, segurança e otimização conduzidas com processos claros e foco em governança.
+        </p>
+        <div class="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+          <span>Arquitetura • DevOps • Auditoria</span>
+        </div>
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-sky-500 via-sky-400 to-sky-500 opacity-0 transition group-hover:opacity-100"></span>
       </div>
     </div>
   </section>
 
-  <section class="container mx-auto px-6 py-12">
-    <h2 class="text-3xl font-bold mb-4 text-white">Portfólio Exemplos</h2>
-    <p class="text-white/80">Aqui vai um grid com seus cases reais.</p>
+  <section class="mx-auto max-w-6xl px-6 pb-20">
+    <div class="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-12 text-center">
+      <h2 class="text-3xl font-semibold text-slate-50 md:text-4xl">Portfólio em constante evolução</h2>
+      <p class="mt-4 text-slate-400">
+        Em breve, compartilhe cases com indicadores claros de sucesso. Enquanto isso, agende uma conversa para conhecer os
+        bastidores dos nossos projetos.
+      </p>
+      <a
+        href="/contact"
+        class="mt-8 inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-sky-950/40 transition hover:bg-sky-400"
+      >
+        Conversar com um especialista
+      </a>
+    </div>
   </section>
 </Layout>
