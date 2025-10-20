@@ -5,17 +5,31 @@
 @tailwind utilities;
 
 @theme {
-  /* Refreshing Summer Fun Palette */
-  --color-sky-blue: #8ecae6;
-  --color-turquoise: #219ebc;
-  --color-deep-teal: #023047;
-  --color-honey: #ffb703;
-  --color-orange: #fb8500;
+  --font-sans: "Inter", "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --color-brand: #38bdf8;
+  --color-brand-strong: #0ea5e9;
+  --color-surface-950: #020617;
+  --color-surface-900: #0f172a;
+  --color-surface-800: #1e293b;
+  --color-surface-700: #334155;
+  --color-muted: #94a3b8;
+  --color-highlight: #f8fafc;
+}
 
-  /* Aliases para facilitar o uso */
-  --color-primary: #219ebc;
-  --color-secondary: #ffb703;
-  --color-dark: #023047;
-  --color-light: #8ecae6;
-  --color-accent: #fb8500;
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased font-sans;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-sky-500/40 text-slate-50;
+  }
 }
