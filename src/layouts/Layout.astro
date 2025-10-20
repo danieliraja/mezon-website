@@ -32,13 +32,48 @@ const { title = 'Mezon' } = Astro.props;
           >
             Fale com a gente
           </a>
-          <button class="inline-flex items-center justify-center rounded-full border border-slate-700/80 p-2 text-slate-400 md:hidden" aria-label="Abrir menu">
+          <button
+            id="mobile-menu-button"
+            class="inline-flex items-center justify-center rounded-full border border-slate-700/80 p-2 text-slate-400 transition hover:border-sky-400/60 hover:text-sky-200 md:hidden"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            type="button"
+          >
             <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
         </div>
+        <div
+          id="mobile-menu"
+          class="md:hidden"
+          hidden
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu principal"
+        >
+          <div class="border-t border-slate-800/60 bg-slate-950/95 px-6 pb-6 pt-3 shadow-lg shadow-slate-950/40">
+            <nav class="flex flex-col gap-4 text-base font-medium text-slate-200" aria-label="Navegação principal">
+              <a data-menu-initial-focus href="/" class="rounded-xl px-3 py-2 transition hover:bg-slate-900/80 hover:text-sky-200">Home</a>
+              <a href="/services" class="rounded-xl px-3 py-2 transition hover:bg-slate-900/80 hover:text-sky-200">Serviços</a>
+              <a href="/contact" class="rounded-xl px-3 py-2 transition hover:bg-slate-900/80 hover:text-sky-200">Contato</a>
+            </nav>
+            <a
+              href="/contact"
+              class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-md shadow-sky-950/40 transition hover:bg-sky-400"
+            >
+              Fale com a gente
+            </a>
+          </div>
+        </div>
       </header>
+
+      <div
+        id="mobile-menu-overlay"
+        class="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-200 opacity-0 md:hidden"
+        hidden
+      ></div>
 
       <main class="flex-1">
         <slot />
@@ -60,5 +95,92 @@ const { title = 'Mezon' } = Astro.props;
         </div>
       </footer>
     </div>
+    <script type="module">
+      const button = document.getElementById('mobile-menu-button');
+      const panel = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-menu-overlay');
+
+      const restoreScroll = () => {
+        if (Object.prototype.hasOwnProperty.call(document.body.dataset, 'scrollLock')) {
+          const previous = document.body.dataset.scrollLock;
+          if (previous) {
+            document.body.style.overflow = previous;
+          } else {
+            document.body.style.removeProperty('overflow');
+          }
+          delete document.body.dataset.scrollLock;
+        } else {
+          document.body.style.removeProperty('overflow');
+        }
+      };
+
+      const toggleScroll = (lock) => {
+        if (lock) {
+          if (!Object.prototype.hasOwnProperty.call(document.body.dataset, 'scrollLock')) {
+            document.body.dataset.scrollLock = document.body.style.overflow || '';
+          }
+          document.body.style.overflow = 'hidden';
+        } else {
+          restoreScroll();
+        }
+      };
+
+      if (button && panel) {
+        const focusTarget = panel.querySelector('[data-menu-initial-focus]');
+        const closeMenu = () => {
+          button.setAttribute('aria-expanded', 'false');
+          panel.hidden = true;
+          if (overlay) {
+            overlay.hidden = true;
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0');
+          }
+          restoreScroll();
+        };
+
+        const openMenu = () => {
+          button.setAttribute('aria-expanded', 'true');
+          panel.hidden = false;
+          if (overlay) {
+            overlay.hidden = false;
+            overlay.classList.add('opacity-100');
+            overlay.classList.remove('opacity-0');
+          }
+          toggleScroll(true);
+          if (focusTarget instanceof HTMLElement) {
+            focusTarget.focus();
+          }
+        };
+
+        const toggleMenu = () => {
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+          if (isExpanded) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        };
+
+        button.addEventListener('click', toggleMenu);
+
+        overlay?.addEventListener('click', closeMenu);
+
+        panel.querySelectorAll('a[href], button[data-close-menu]').forEach((element) => {
+          element.addEventListener('click', closeMenu);
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 768) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeMenu();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
