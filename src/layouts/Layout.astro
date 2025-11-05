@@ -1,6 +1,19 @@
 ---
 import '../styles/global.css';
 const { title = 'Mezon' } = Astro.props;
+const whatsappLink =
+  'https://wa.me/558591622619?text=Ol%C3%A1%20Mezon%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20desenvolvimento%20de%20sistemas%20e%20sites.';
+const navigation = [
+  { href: '/#servicos', label: 'Serviços' },
+  { href: '/#processo', label: 'Como funciona' },
+  { href: '/#clientes', label: 'Clientes' },
+  { href: '/#contato', label: 'Contato' },
+];
+const socialLinks = [
+  { href: 'https://www.linkedin.com', label: 'LinkedIn', icon: 'linkedin' },
+  { href: 'https://www.instagram.com', label: 'Instagram', icon: 'instagram' },
+  { href: 'https://github.com', label: 'GitHub', icon: 'github' },
+];
 ---
 
 <!DOCTYPE html>
@@ -11,30 +24,37 @@ const { title = 'Mezon' } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class="relative flex min-h-screen flex-col overflow-hidden">
+    <div class="relative flex min-h-screen flex-col overflow-hidden bg-[#050915] text-slate-100">
       <div class="pointer-events-none absolute inset-0 -z-10">
-        <div class="absolute -left-32 top-24 h-80 w-80 rounded-full bg-sky-500/20 blur-3xl"></div>
-        <div class="absolute right-[-10rem] top-1/3 h-96 w-96 rounded-full bg-sky-400/10 blur-3xl"></div>
-        <div class="absolute bottom-[-6rem] left-1/2 h-96 w-[28rem] -translate-x-1/2 rounded-full bg-sky-500/10 blur-3xl"></div>
+        <div class="absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#00a7f5]/15 blur-3xl"></div>
+        <div class="absolute right-[-10rem] top-1/3 h-96 w-96 rounded-full bg-[#00a7f5]/10 blur-3xl"></div>
+        <div class="absolute bottom-[-6rem] left-1/2 h-96 w-[28rem] -translate-x-1/2 rounded-full bg-[#00a7f5]/10 blur-3xl"></div>
       </div>
 
-      <header class="sticky top-0 z-40 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60">
+      <header class="sticky top-0 z-40 border-b border-white/10 bg-[#050915]/90 backdrop-blur supports-[backdrop-filter]:bg-[#050915]/70">
         <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="/" class="text-lg font-semibold tracking-tight text-slate-100">Mezon</a>
-          <nav class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
-            <a href="/" class="hover:text-sky-300">Home</a>
-            <a href="/services" class="hover:text-sky-300">Serviços</a>
-            <a href="/contact" class="hover:text-sky-300">Contato</a>
+          <a href="/" class="text-lg font-semibold tracking-tight text-white">
+            <span class="text-[#00a7f5]">Mezon</span> Tecnologia
+          </a>
+          <nav class="hidden items-center gap-8 text-sm font-medium text-slate-200 md:flex" aria-label="Menu principal">
+            {navigation.map((item) => (
+              <a href={item.href} class="hover:text-[#00a7f5]">{item.label}</a>
+            ))}
           </nav>
           <a
-            href="/contact"
-            class="hidden rounded-full border border-sky-500/40 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-sky-300 shadow-sm shadow-slate-900/40 transition hover:border-sky-400/60 hover:text-sky-200 md:inline-flex"
+            href={whatsappLink}
+            class="hidden items-center gap-2 rounded-full bg-[#00a7f5] px-4 py-2 text-sm font-semibold text-[#0d1529] shadow-lg shadow-[#00111f]/40 transition hover:bg-[#26b9ff] md:inline-flex"
+            rel="noreferrer"
+            target="_blank"
           >
-            Fale com a gente
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.52 3.48A11.8 11.8 0 0012.04 0C5.53 0 .23 5.3.23 11.82c0 2.08.54 4.12 1.58 5.92L0 24l6.4-1.75a11.86 11.86 0 005.64 1.44h.01c6.52 0 11.82-5.3 11.82-11.82a11.78 11.78 0 00-3.35-8.39z" />
+            </svg>
+            Falar no WhatsApp
           </a>
           <button
             id="mobile-menu-button"
-            class="inline-flex items-center justify-center rounded-full border border-slate-700/80 p-2 text-slate-400 transition hover:border-sky-400/60 hover:text-sky-200 md:hidden"
+            class="inline-flex items-center justify-center rounded-full border border-white/15 p-2 text-slate-300 transition hover:border-[#00a7f5]/60 hover:text-[#00a7f5] md:hidden"
             aria-label="Abrir menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
@@ -53,17 +73,22 @@ const { title = 'Mezon' } = Astro.props;
           aria-modal="true"
           aria-label="Menu principal"
         >
-          <div class="border-t border-slate-800/60 bg-slate-950/95 px-6 pb-6 pt-3 shadow-lg shadow-slate-950/40">
-            <nav class="flex flex-col gap-4 text-base font-medium text-slate-200" aria-label="Navegação principal">
-              <a data-menu-initial-focus href="/" class="rounded-xl px-3 py-2 transition hover:bg-slate-900/80 hover:text-sky-200">Home</a>
-              <a href="/services" class="rounded-xl px-3 py-2 transition hover:bg-slate-900/80 hover:text-sky-200">Serviços</a>
-              <a href="/contact" class="rounded-xl px-3 py-2 transition hover:bg-slate-900/80 hover:text-sky-200">Contato</a>
+          <div class="border-t border-white/10 bg-[#050915]/95 px-6 pb-6 pt-3 shadow-lg shadow-[#00111f]/40">
+            <nav class="flex flex-col gap-4 text-base font-medium text-white" aria-label="Navegação principal">
+              {navigation.map((item) => (
+                <a data-menu-initial-focus href={item.href} class="rounded-xl px-3 py-2 transition hover:bg-white/10 hover:text-[#00a7f5]">{item.label}</a>
+              ))}
             </nav>
             <a
-              href="/contact"
-              class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-md shadow-sky-950/40 transition hover:bg-sky-400"
+              href={whatsappLink}
+              class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#00a7f5] px-5 py-3 text-sm font-semibold text-[#0d1529] shadow-md shadow-[#00111f]/40 transition hover:bg-[#26b9ff]"
+              rel="noreferrer"
+              target="_blank"
             >
-              Fale com a gente
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.52 3.48A11.8 11.8 0 0012.04 0C5.53 0 .23 5.3.23 11.82c0 2.08.54 4.12 1.58 5.92L0 24l6.4-1.75a11.86 11.86 0 005.64 1.44h.01c6.52 0 11.82-5.3 11.82-11.82a11.78 11.78 0 00-3.35-8.39z" />
+              </svg>
+              Falar no WhatsApp
             </a>
           </div>
         </div>
@@ -71,7 +96,7 @@ const { title = 'Mezon' } = Astro.props;
 
       <div
         id="mobile-menu-overlay"
-        class="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-200 opacity-0 md:hidden"
+        class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-200 md:hidden"
         hidden
       ></div>
 
@@ -79,18 +104,87 @@ const { title = 'Mezon' } = Astro.props;
         <slot />
       </main>
 
-      <footer class="border-t border-slate-800/60 bg-slate-950/80">
-        <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h4 class="text-base font-semibold text-slate-100">Mezon</h4>
-            <p class="mt-1 max-w-sm text-slate-400">
-              Produtos digitais pensados para gerar confiança, eficiência e crescimento sustentável.
-            </p>
+      <a
+        href={whatsappLink}
+        class="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#00a7f5] px-5 py-3 text-sm font-semibold text-[#0d1529] shadow-xl shadow-[#00111f]/50 transition hover:bg-[#26b9ff]"
+        rel="noreferrer"
+        target="_blank"
+        aria-label="Conversar com a Mezon pelo WhatsApp"
+      >
+        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.52 3.48A11.8 11.8 0 0012.04 0C5.53 0 .23 5.3.23 11.82c0 2.08.54 4.12 1.58 5.92L0 24l6.4-1.75a11.86 11.86 0 005.64 1.44h.01c6.52 0 11.82-5.3 11.82-11.82a11.78 11.78 0 00-3.35-8.39z" />
+        </svg>
+        WhatsApp
+      </a>
+
+      <footer class="border-t border-white/10 bg-[#050915]/95">
+        <div class="mx-auto w-full max-w-6xl px-6 py-12">
+          <div class="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,1fr))]">
+            <div>
+              <h4 class="text-xl font-semibold text-white">Mezon Tecnologia</h4>
+              <p class="mt-3 text-sm text-slate-300">
+                Desenvolvimento de sistemas, sites e chatbots com foco em pequenas empresas. Solução simples e direta para acelerar suas vendas.
+              </p>
+            </div>
+            <div>
+              <h5 class="text-sm font-semibold uppercase tracking-[0.22em] text-[#00a7f5]">Contato</h5>
+              <ul class="mt-4 space-y-3 text-sm text-slate-300">
+                <li>
+                  <a href={whatsappLink} rel="noreferrer" target="_blank" class="hover:text-[#00a7f5]">WhatsApp: +55 85 9162-2619</a>
+                </li>
+                <li>
+                  <a href="mailto:mezon.servicos@gmail.com" class="hover:text-[#00a7f5]">mezon.servicos@gmail.com</a>
+                </li>
+                <li>
+                  <span>Fortaleza • Ceará • Brasil (atendimento online para todo o país)</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="text-sm font-semibold uppercase tracking-[0.22em] text-[#00a7f5]">Links rápidos</h5>
+              <ul class="mt-4 space-y-3 text-sm text-slate-300">
+                {navigation.map((item) => (
+                  <li><a href={item.href} class="hover:text-[#00a7f5]">{item.label}</a></li>
+                ))}
+                <li><a href="/privacy" class="hover:text-[#00a7f5]">Política de Privacidade</a></li>
+                <li><a href="/terms" class="hover:text-[#00a7f5]">Termos de Uso</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="text-sm font-semibold uppercase tracking-[0.22em] text-[#00a7f5]">Redes sociais</h5>
+              <p class="mt-4 text-sm text-slate-300">Acompanhe cases e novidades sobre tecnologia para pequenas empresas.</p>
+              <div class="mt-4 flex gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    href={social.href}
+                    class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-[#00a7f5]/70 hover:text-[#00a7f5]"
+                    aria-label={social.label}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {social.icon === 'linkedin' && (
+                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 0h-14C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732A1.754 1.754 0 116.499 3a1.754 1.754 0 01.001 3.732zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z" />
+                      </svg>
+                    )}
+                    {social.icon === 'instagram' && (
+                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                    )}
+                    {social.icon === 'github' && (
+                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 0C5.375 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234C5.662 21.282 4.967 18.971 4.967 18.971c-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.8 24 17.303 24 12c0-6.627-5.373-12-12-12z" />
+                      </svg>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <div class="flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-slate-500">
-            <span>© {new Date().getFullYear()} Mezon</span>
-            <span class="hidden h-0.5 w-8 rounded-full bg-slate-700 md:block"></span>
-            <span>Todos os direitos reservados</span>
+          <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Mezon. Todos os direitos reservados.</p>
+            <p>Feito em Fortaleza, atendendo empresas no Brasil inteiro.</p>
           </div>
         </div>
       </footer>
