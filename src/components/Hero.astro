@@ -1,91 +1,137 @@
 ---
+const whatsappLink =
+  'https://wa.me/558591622619?text=Ol%C3%A1%20Mezon%2C%20quero%20um%20or%C3%A7amento%20para%20desenvolvimento%20de%20sistemas%20e%20sites.';
+const serviceOptions = [
+  'Desenvolvimento de sistemas web',
+  'Criação de chatbots inteligentes',
+  'Criação de websites institucionais',
+];
 ---
 <section class="relative isolate overflow-hidden py-24">
-  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"></div>
-  <div class="absolute left-1/2 top-0 -z-10 h-[28rem] w-[36rem] -translate-x-1/2 rounded-full bg-sky-500/20 blur-3xl"></div>
-  <div class="absolute -right-24 bottom-[-6rem] -z-10 h-80 w-80 rounded-full bg-sky-400/10 blur-3xl"></div>
+  <div class="absolute inset-0 -z-10 bg-[#0d1529]"></div>
+  <div class="absolute left-1/2 top-0 -z-10 h-[28rem] w-[36rem] -translate-x-1/2 rounded-full bg-[#00a7f5]/20 blur-3xl"></div>
+  <div class="absolute -right-24 bottom-[-6rem] -z-10 h-80 w-80 rounded-full bg-[#00a7f5]/10 blur-3xl"></div>
 
-  <div class="mx-auto grid max-w-6xl items-center gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+  <div class="mx-auto grid max-w-6xl items-start gap-16 px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
     <div>
-      <span class="inline-flex items-center gap-2 rounded-full border border-sky-500/40 bg-slate-900/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-sky-300">
-        tecnologia confiável
+      <span class="inline-flex items-center gap-2 rounded-full border border-[#00a7f5]/40 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-[#00a7f5]">
+        solução simples e direta
       </span>
-      <h1 class="mt-6 text-4xl font-semibold leading-tight text-slate-50 md:text-6xl">
-        Transformamos tecnologia em resultados que inspiram confiança
+      <h1 class="mt-6 text-4xl font-semibold leading-tight text-white md:text-6xl">
+        Desenvolvemos sistemas, sites e chatbots para pequenas empresas crescerem em Fortaleza e online
       </h1>
-      <p class="mt-5 max-w-2xl text-lg text-slate-300">
-        Projetos digitais sob medida, arquitetura escalável e uma equipe que fala a língua do seu negócio. Da estratégia à
-        entrega, cada etapa é pensada para gerar impacto real.
+      <p class="mt-5 max-w-2xl text-lg text-slate-200">
+        Equipe especialista em tecnologia sob medida, integração com o que você já usa e suporte contínuo para gerar resultados reais.
       </p>
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
         <a
-          href="/contact"
-          class="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-sky-950/40 transition hover:bg-sky-400"
+          href={whatsappLink}
+          class="inline-flex items-center justify-center rounded-full bg-[#00a7f5] px-7 py-3 text-base font-semibold text-[#0d1529] shadow-lg shadow-[#00111f]/40 transition hover:bg-[#26b9ff]"
+          rel="noreferrer"
+          target="_blank"
         >
-          Solicitar orçamento
+          Falar no WhatsApp
         </a>
         <a
-          href="/services"
-          class="inline-flex items-center justify-center rounded-full border border-slate-700/70 bg-slate-900/60 px-7 py-3 text-base font-semibold text-slate-200 transition hover:border-sky-400/60 hover:text-sky-200"
+          href="#processo"
+          class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3 text-base font-semibold text-white transition hover:border-[#00a7f5]/70 hover:text-[#00a7f5]"
         >
-          Ver serviços
+          Ver como funciona
         </a>
       </div>
-      <div class="mt-12 grid gap-6 text-sm text-slate-300 sm:grid-cols-3">
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/60 p-5">
-          <p class="text-2xl font-semibold text-slate-50">+10 anos</p>
-          <p class="mt-1 text-slate-400">Construindo soluções digitais de alta performance.</p>
+      <dl class="mt-12 grid gap-6 text-sm text-slate-200 sm:grid-cols-3">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <dt class="text-xs font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Atuação</dt>
+          <dd class="mt-2 text-base font-semibold text-white">Fortaleza e atendimento online</dd>
         </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/60 p-5">
-          <p class="text-2xl font-semibold text-slate-50">Equipe senior</p>
-          <p class="mt-1 text-slate-400">Especialistas em produto, engenharia e experiência.</p>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <dt class="text-xs font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Experiência</dt>
+          <dd class="mt-2 text-base font-semibold text-white">Projetos personalizados para pequenas empresas</dd>
         </div>
-        <div class="rounded-2xl border border-slate-800/70 bg-slate-900/60 p-5">
-          <p class="text-2xl font-semibold text-slate-50">Entrega segura</p>
-          <p class="mt-1 text-slate-400">Processos auditáveis, métricas claras e foco em confiabilidade.</p>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <dt class="text-xs font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Oferta</dt>
+          <dd class="mt-2 text-base font-semibold text-white">Domínio grátis no primeiro ano</dd>
         </div>
-      </div>
+      </dl>
     </div>
 
-    <div class="relative rounded-3xl border border-slate-800/70 bg-slate-900/60 p-10 shadow-2xl shadow-slate-950/40">
-      <div class="mb-8 flex items-center justify-between text-sm text-slate-400">
-        <span class="font-medium text-slate-200">Painel de projetos</span>
-        <span class="rounded-full border border-slate-700/70 px-3 py-1 text-xs uppercase tracking-[0.2em]">Status</span>
+    <div class="relative rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-[#00111f]/40">
+      <div class="flex flex-col gap-4 border-b border-white/10 pb-6 text-sm text-slate-200">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Contato direto</p>
+        <a href={whatsappLink} class="flex items-center gap-2 text-base font-semibold text-white hover:text-[#00a7f5]" rel="noreferrer" target="_blank">
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.52 3.48A11.8 11.8 0 0012.04 0C5.53 0 .23 5.3.23 11.82c0 2.08.54 4.12 1.58 5.92L0 24l6.4-1.75a11.86 11.86 0 005.64 1.44h.01c6.52 0 11.82-5.3 11.82-11.82a11.78 11.78 0 00-3.35-8.39zm-8.48 18.1h-.01a9.9 9.9 0 01-5.04-1.39l-.36-.21-3.8 1.04 1.02-3.7-.24-.38a9.87 9.87 0 01-1.52-5.28c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 016.99 2.9 9.8 9.8 0 012.88 6.96c0 5.46-4.43 9.9-9.82 9.94zm5.41-7.4c-.3-.15-1.78-.88-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.41-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.12.3-.32.45-.48.15-.17.2-.27.3-.45.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37s-1.05 1.03-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.13 3.26 5.17 4.57.72.31 1.28.5 1.72.64.72.23 1.37.2 1.89.12.57-.08 1.78-.73 2.03-1.42.25-.7.25-1.3.18-1.42-.07-.12-.27-.2-.57-.36z" />
+          </svg>
+          +55 85 9162-2619
+        </a>
+        <a href="mailto:mezon.servicos@gmail.com" class="flex items-center gap-2 text-sm text-slate-200 hover:text-[#00a7f5]">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          mezon.servicos@gmail.com
+        </a>
+        <p class="text-xs text-slate-400">Atendimento de segunda a sexta, 9h às 18h.</p>
       </div>
-      <div class="space-y-6">
+
+      <form class="mt-8 space-y-5" action="#" method="POST">
+        <h2 class="text-lg font-semibold text-white">Solicite um orçamento rápido</h2>
         <div>
-          <div class="flex items-center justify-between">
-            <p class="font-semibold text-slate-100">Onboarding digital</p>
-            <span class="text-xs font-semibold text-sky-300">em desenvolvimento</span>
-          </div>
-          <div class="mt-2 h-2 rounded-full bg-slate-800">
-            <div class="h-full w-3/4 rounded-full bg-sky-500"></div>
-          </div>
+          <label class="mb-2 block text-sm font-medium text-slate-200" for="lead-name">Nome</label>
+          <input
+            class="w-full rounded-xl border border-white/10 bg-[#0d1529]/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-[#00a7f5] focus:outline-none focus:ring-2 focus:ring-[#00a7f5]/40"
+            type="text"
+            id="lead-name"
+            name="name"
+            placeholder="Como devemos te chamar?"
+            required
+          />
         </div>
         <div>
-          <div class="flex items-center justify-between">
-            <p class="font-semibold text-slate-100">Plataforma B2B</p>
-            <span class="text-xs font-semibold text-green-400">entregue</span>
-          </div>
-          <div class="mt-2 h-2 rounded-full bg-slate-800">
-            <div class="h-full w-full rounded-full bg-green-400"></div>
-          </div>
+          <label class="mb-2 block text-sm font-medium text-slate-200" for="lead-phone">WhatsApp</label>
+          <input
+            class="w-full rounded-xl border border-white/10 bg-[#0d1529]/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-[#00a7f5] focus:outline-none focus:ring-2 focus:ring-[#00a7f5]/40"
+            type="tel"
+            id="lead-phone"
+            name="whatsapp"
+            placeholder="(85) 9 0000-0000"
+            required
+          />
         </div>
         <div>
-          <div class="flex items-center justify-between">
-            <p class="font-semibold text-slate-100">Aplicativo logístico</p>
-            <span class="text-xs font-semibold text-amber-300">kickoff</span>
-          </div>
-          <div class="mt-2 h-2 rounded-full bg-slate-800">
-            <div class="h-full w-1/4 rounded-full bg-amber-300"></div>
-          </div>
+          <label class="mb-2 block text-sm font-medium text-slate-200" for="lead-city">Cidade/Estado</label>
+          <input
+            class="w-full rounded-xl border border-white/10 bg-[#0d1529]/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-[#00a7f5] focus:outline-none focus:ring-2 focus:ring-[#00a7f5]/40"
+            type="text"
+            id="lead-city"
+            name="city"
+            placeholder="Fortaleza / CE"
+          />
         </div>
-      </div>
-      <div class="mt-10 rounded-2xl border border-slate-800 bg-slate-950/80 p-6">
-        <p class="text-sm uppercase tracking-[0.25em] text-slate-500">Satisfação média</p>
-        <p class="mt-3 text-4xl font-semibold text-slate-50">9.6</p>
-        <p class="mt-2 text-sm text-slate-400">Baseado no feedback de clientes corporativos nos últimos 12 meses.</p>
-      </div>
+        <div>
+          <label class="mb-2 block text-sm font-medium text-slate-200" for="lead-service">Serviço de interesse</label>
+          <select
+            class="w-full rounded-xl border border-white/10 bg-[#0d1529]/60 px-4 py-3 text-sm text-white focus:border-[#00a7f5] focus:outline-none focus:ring-2 focus:ring-[#00a7f5]/40"
+            id="lead-service"
+            name="service"
+            required
+          >
+            <option value="">Selecione uma opção</option>
+            {serviceOptions.map((option) => (
+              <option value={option}>{option}</option>
+            ))}
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="w-full rounded-full bg-[#00a7f5] px-6 py-3 text-sm font-semibold text-[#0d1529] shadow-lg shadow-[#00111f]/40 transition hover:bg-[#26b9ff]"
+        >
+          Quero falar com a Mezon
+        </button>
+        <p class="text-xs text-slate-400">
+          Preferiu? Clique no botão acima ou chame direto no WhatsApp. Respondemos em até um dia útil.
+        </p>
+      </form>
     </div>
   </div>
 </section>
