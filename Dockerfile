@@ -1,19 +1,18 @@
-FROM node:20-bullseye-slim AS deps
+# Stage 1: Build the Astro site
+FROM node:lts AS builder
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm ci
-
-FROM node:20-bullseye-slim AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+COPY package*.json ./
+RUN npm install
 COPY . .
 RUN npm run build
 
-FROM node:20-bullseye-slim AS runner
+# Stage 2: Run the application
+FROM node:lts-alpine
 WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=builder /app/package.json /app/package-lock.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-EXPOSE 3000
-CMD ["npx", "astro", "preview", "--host", "0.0.0.0", "--port", "3000"]
+# Copy the built application from the builder stage
+COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/package*.json ./
+# The server runs on port 4321 by default for Astro SSR
+ENV PORT=4321
+EXPOSE 4321
+CMD ["npm", "start"]
