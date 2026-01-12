@@ -1,0 +1,6 @@
+services:
+  astro:
+    build: .
+    expose:
+      - "80"
+    restart: unless-stopped
