@@ -1,16 +1,19 @@
-FROM node:20-alpine AS deps
+FROM node:20-bullseye-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci
 
-FROM node:20-alpine AS builder
+FROM node:20-bullseye-slim AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine AS runner
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:20-bullseye-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=builder /app/package.json /app/package-lock.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+CMD ["npx", "astro", "preview", "--host", "0.0.0.0", "--port", "3000"]
