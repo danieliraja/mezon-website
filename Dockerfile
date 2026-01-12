@@ -1,18 +1,15 @@
-# Stage 1: Build the Astro site
-FROM node:lts AS builder
+FROM node:22-alpine AS deps
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-# Stage 2: Run the application
-FROM node:lts-alpine
-WORKDIR /app
-# Copy the built application from the builder stage
-COPY --from=builder /app/dist /app/dist
-COPY --from=builder /app/package*.json ./
-# The server runs on port 4321 by default for Astro SSR
-ENV PORT=4321
-EXPOSE 4321
-CMD ["npm", "start"]
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
