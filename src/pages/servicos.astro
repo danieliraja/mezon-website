@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const whatsappLink =
+  'https://wa.me/558591622619?text=' +
+  encodeURIComponent('Olá Mezon, quero um orçamento para desenvolvimento de sistemas.');
+
+const services = [
+  {
+    code: 'S-01',
+    slug: 'sistemas',
+    title: 'Sistemas web sob medida',
+    lead:
+      'Quando a operação cresce, planilha vira gargalo. Construímos o sistema que centraliza processo, dado e acompanhamento — desenhado sobre a sua rotina, não sobre um template.',
+    entrega: [
+      'Levantamento de processos e regras de negócio',
+      'Modelagem de dados e arquitetura da aplicação',
+      'Múltiplos perfis de acesso e permissões',
+      'Painéis de indicadores em tempo real',
+      'Integração com ERPs, CRMs e sistemas financeiros',
+      'Publicação, treinamento e suporte pós-entrega',
+    ],
+    stack: 'Angular · NestJS · Node.js · PostgreSQL · Docker',
+  },
+  {
+    code: 'S-02',
+    slug: 'ia',
+    title: 'Automação e atendimento com IA',
+    lead:
+      'Atendimento por WhatsApp com inteligência artificial que responde a partir dos seus próprios documentos e executa tarefas dentro do sistema — não é robô de menu numerado.',
+    entrega: [
+      'Assistente que responde com base na sua base de conhecimento',
+      'Agentes que consultam e executam ações no seu sistema',
+      'Integração oficial com WhatsApp Business API',
+      'Repasse para atendente humano quando o caso exige',
+      'Registro de conversas e acompanhamento de atendimentos',
+      'Ajuste contínuo das respostas conforme o uso real',
+    ],
+    stack: 'LLMs · RAG · embeddings · WhatsApp Business API · RabbitMQ',
+  },
+  {
+    code: 'S-03',
+    slug: 'integracoes',
+    title: 'Integrações e sistemas legados',
+    lead:
+      'O dado existe, mas está preso em sistemas que não conversam. Conectamos plataformas, APIs de terceiros e aquele sistema antigo que ninguém quer — nem pode — substituir.',
+    entrega: [
+      'APIs REST e webhooks entre plataformas',
+      'Integração com sistemas legados sem reescrita',
+      'Sincronização e consistência de dados',
+      'Filas e processamento assíncrono para alto volume',
+      'Tratamento de erro e reprocessamento automático',
+      'Monitoramento das integrações em produção',
+    ],
+    stack: 'REST · webhooks · RabbitMQ · SQL Server · PostgreSQL',
+  },
+  {
+    code: 'S-04',
+    slug: 'sites',
+    title: 'Sites institucionais',
+    lead:
+      'Site rápido, encontrável no Google e construído para gerar contato — não uma vitrine bonita que ninguém acha.',
+    entrega: [
+      'Estrutura planejada para SEO local e nacional',
+      'Layout responsivo e otimizado para mobile',
+      'Formulário e WhatsApp integrados para captação',
+      'Dados estruturados para busca e assistentes de IA',
+      'Medição de conversões desde o primeiro dia',
+      'Domínio grátis no primeiro ano para novos projetos',
+    ],
+    stack: 'Astro · Tailwind · SEO técnico · dados estruturados',
+  },
+];
+
+const SITE = 'https://mezon.com.br';
+
+const serviceSchemas = services.map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE}/servicos#${s.slug}`,
+  name: s.title,
+  description: s.lead,
+  serviceType: s.title,
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: [
+    { '@type': 'City', name: 'Fortaleza' },
+    { '@type': 'Country', name: 'Brasil' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: `Escopo — ${s.title}`,
+    itemListElement: s.entrega.map((e) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: e },
+    })),
+  },
+}));
+
+const listSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Serviços da Mezon',
+  itemListElement: services.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: s.title,
+    url: `${SITE}/servicos#${s.slug}`,
+  })),
+};
+---
+
+<Layout
+  title="Serviços — Sistemas, IA e integrações | Mezon"
+  description="Desenvolvimento de sistemas web sob medida, automação de atendimento com IA, integrações entre sistemas e sites institucionais. Fortaleza-CE e atendimento remoto."
+  path="/servicos"
+  schemas={[...serviceSchemas, listSchema]}
+  breadcrumb={[{ name: 'Início', path: '/' }, { name: 'Serviços', path: '/servicos' }]}
+>
+  <section class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+    <p class="label"><span class="label-num">02</span> Serviços</p>
+    <h1 class="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-ink md:text-5xl">
+      O que a Mezon constrói
+    </h1>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-2">
+      Quatro frentes de trabalho. Todas com escopo fechado, entregas parciais para
+      acompanhamento e suporte depois que o sistema entra no ar.
+    </p>
+
+    <div class="mt-14 space-y-6">
+      {services.map((s) => (
+        <article id={s.slug} class="panel">
+          <div class="panel-in grid gap-8 p-7 md:grid-cols-[1fr_1.15fr] md:p-10">
+            <div>
+              <span class="font-mono text-xs tracking-[.18em] text-ink-3">{s.code}</span>
+              <h2 class="mt-4 text-2xl font-semibold leading-snug text-ink md:text-3xl">{s.title}</h2>
+              <p class="mt-4 text-base leading-relaxed text-ink-2">{s.lead}</p>
+              <div class="mt-6 rule"><i></i><i></i><i></i></div>
+              <p class="mt-5 font-mono text-xs leading-relaxed tracking-[.1em] text-ink-3">{s.stack}</p>
+              <a href="/contato" class="btn btn-primary mt-7 !py-3 !text-sm">Solicitar orçamento</a>
+            </div>
+
+            <div class="border-t border-edge pt-7 md:border-l md:border-t-0 md:pl-9 md:pt-0">
+              <p class="font-mono text-xs uppercase tracking-[.2em] text-amber">O que está incluso</p>
+              <ul class="mt-5 space-y-3 text-sm text-ink-2">
+                {s.entrega.map((e) => (
+                  <li class="flex gap-3">
+                    <span class="mt-[.45rem] h-px w-3 shrink-0 bg-amber"></span>
+                    <span>{e}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="panel panel-hot mt-14">
+      <div class="panel-in flex flex-col items-start gap-6 p-8 md:flex-row md:items-center md:justify-between md:p-10">
+        <div>
+          <h2 class="text-2xl font-semibold text-ink">Não sabe qual frente resolve seu caso?</h2>
+          <p class="mt-2 text-base text-ink-2">Descreva a situação. O diagnóstico é sem custo.</p>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a href="/contato" class="btn btn-primary">Solicitar orçamento</a>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

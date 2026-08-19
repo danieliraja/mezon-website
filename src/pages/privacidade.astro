@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalPage from '../components/LegalPage.astro';
+---
+<Layout
+  title="Política de Privacidade | Mezon"
+  description="Como a Mezon coleta, usa e protege os dados pessoais informados no site e nos canais de atendimento, conforme a LGPD."
+  path="/privacidade"
+  breadcrumb={[{ name: 'Início', path: '/' }, { name: 'Privacidade', path: '/privacidade' }]}
+>
+  <LegalPage
+    eyebrow="Política de Privacidade"
+    heading="Como tratamos seus dados"
+    intro="Valorizamos a transparência na relação com nossos clientes e visitantes. Este documento explica como tratamos os dados coletados em nosso site e nos canais de atendimento."
+    updated="JANEIRO DE 2026"
+  >
+    <section><h2>1. Informações coletadas</h2><p>Coletamos dados informados voluntariamente pelos visitantes, como nome, e-mail, WhatsApp, cidade/estado e serviço de interesse, para elaborar propostas e comunicar atualizações.</p></section>
+    <section><h2>2. Uso dos dados</h2><p>Utilizamos os dados para responder contatos, preparar orçamentos, enviar materiais informativos relacionados aos nossos serviços e cumprir obrigações legais.</p></section>
+    <section><h2>3. Compartilhamento</h2><p>Não compartilhamos dados pessoais com terceiros, exceto quando necessário para execução de contratos, cumprimento de obrigações legais ou mediante autorização expressa do titular.</p></section>
+    <section><h2>4. Armazenamento e segurança</h2><p>Adotamos medidas técnicas e administrativas para proteger as informações contra acessos não autorizados, perda ou alteração. Os dados são armazenados em provedores de confiança.</p></section>
+    <section><h2>5. Direitos do titular</h2><p>Você pode solicitar acesso, correção, anonimização ou exclusão dos seus dados a qualquer momento pelo e-mail <a href="mailto:mezon.servicos@gmail.com">mezon.servicos@gmail.com</a>.</p></section>
+    <section><h2>6. Contato do encarregado</h2><p>Dúvidas sobre esta política podem ser enviadas para <a href="mailto:mezon.servicos@gmail.com">mezon.servicos@gmail.com</a> ou pelo WhatsApp <a href="https://wa.me/558591622619" target="_blank" rel="noopener noreferrer">(85) 99162-2619</a>.</p></section>
+  </LegalPage>
+</Layout>

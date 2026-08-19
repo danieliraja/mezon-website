@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Chave pública do Web3Forms. Crie a sua em https://web3forms.com (grátis,
+// basta informar o e-mail que vai receber os leads) e coloque em .env:
+//   PUBLIC_WEB3FORMS_KEY=sua-chave-aqui
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? 'COLE-SUA-ACCESS-KEY-AQUI';
+
+const whatsappLink =
+  'https://wa.me/558591622619?text=' +
+  encodeURIComponent('Olá Mezon, gostaria de um orçamento para desenvolvimento de sistemas.');
+
+const projectTypes = [
+  'Sistema sob medida (ERP, portal, gestão)',
+  'Automação de atendimento com IA',
+  'Integração entre sistemas / APIs',
+  'Site institucional',
+  'Evolução de sistema existente',
+  'Ainda não sei — preciso de orientação',
+];
+
+const SITE = 'https://mezon.com.br';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${SITE}/contato#page`,
+  name: 'Contato — Mezon',
+  description:
+    'Solicite um orçamento para desenvolvimento de sistemas sob medida, automação com IA e integrações.',
+  mainEntity: { '@id': `${SITE}/#organization` },
+};
+---
+
+<Layout
+  title="Contato — Solicite um orçamento | Mezon"
+  description="Fale com a Mezon sobre desenvolvimento de sistemas sob medida, automação com IA e integrações. Resposta em até 24h úteis. Fortaleza-CE e atendimento remoto para todo o Brasil."
+  path="/contato"
+  schemas={[contactSchema]}
+  breadcrumb={[{ name: 'Início', path: '/' }, { name: 'Contato', path: '/contato' }]}
+>
+  <section class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+    <p class="label"><span class="label-num">04</span> Contato</p>
+    <h1 class="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-ink md:text-5xl">
+      Conte o problema. Devolvemos um plano, não um catálogo.
+    </h1>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-2">
+      Descreva sua operação e o que está travando hoje. Respondemos em até 24h úteis
+      com um diagnóstico inicial e os próximos passos — sem compromisso.
+    </p>
+
+    <div class="mt-14 grid gap-8 lg:grid-cols-[1.35fr_1fr] lg:items-start">
+      <!-- ============ FORMULÁRIO ============ -->
+      <div class="panel">
+        <div class="panel-in p-7 md:p-9">
+          <form id="lead-form" class="space-y-5" novalidate>
+            <input type="hidden" name="access_key" value={accessKey} />
+            <input type="hidden" name="subject" value="Novo lead pelo site da Mezon" />
+            <input type="hidden" name="from_name" value="Site Mezon" />
+            <!-- honeypot anti-spam: humano nunca preenche -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label class="field-label" for="nome">Nome *</label>
+                <input class="field" id="nome" name="nome" type="text" required autocomplete="name" placeholder="Seu nome" />
+              </div>
+              <div>
+                <label class="field-label" for="empresa">Empresa</label>
+                <input class="field" id="empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa" />
+              </div>
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label class="field-label" for="email">E-mail *</label>
+                <input class="field" id="email" name="email" type="email" required autocomplete="email" placeholder="voce@empresa.com.br" />
+              </div>
+              <div>
+                <label class="field-label" for="telefone">WhatsApp *</label>
+                <input class="field" id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="(85) 90000-0000" />
+              </div>
+            </div>
+
+            <div>
+              <label class="field-label" for="tipo">O que você precisa *</label>
+              <select class="field" id="tipo" name="tipo" required>
+                <option value="">Selecione…</option>
+                {projectTypes.map((t) => <option value={t}>{t}</option>)}
+              </select>
+            </div>
+
+            <div>
+              <label class="field-label" for="mensagem">Descreva o projeto *</label>
+              <textarea class="field" id="mensagem" name="mensagem" rows="5" required
+                placeholder="Como funciona sua operação hoje e o que está travando?"></textarea>
+            </div>
+
+            <label class="flex items-start gap-3 text-sm text-ink-2">
+              <input type="checkbox" name="consentimento" required
+                     class="mt-1 h-4 w-4 shrink-0 accent-[#ff8a1a]" />
+              <span>
+                Autorizo a Mezon a usar meus dados para responder este contato,
+                conforme a <a href="/privacidade" class="text-amber underline underline-offset-2">Política de Privacidade</a>.
+              </span>
+            </label>
+
+            <button type="submit" id="lead-submit" class="btn btn-primary w-full">
+              <span id="lead-submit-text">Enviar solicitação</span>
+            </button>
+
+            <p id="lead-msg" role="status" aria-live="polite" class="hidden border p-4 text-sm"></p>
+
+            <p class="font-mono text-[.7rem] leading-relaxed tracking-[.1em] text-ink-3">
+              SEUS DADOS NÃO SÃO COMPARTILHADOS COM TERCEIROS.
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- ============ CANAIS DIRETOS ============ -->
+      <div class="space-y-6">
+        <div class="panel panel-hot">
+          <div class="panel-in p-7">
+            <p class="font-mono text-xs uppercase tracking-[.2em] text-amber">Resposta imediata</p>
+            <p class="mt-4 text-lg font-semibold text-ink">Prefere falar agora?</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink-2">
+              Chame no WhatsApp. Normalmente respondemos em minutos durante o horário comercial.
+            </p>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
+               class="btn btn-primary mt-6 w-full" data-evt="whatsapp-contato">
+              Abrir conversa
+            </a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-in p-7">
+            <p class="font-mono text-xs uppercase tracking-[.2em] text-ink-3">Canais</p>
+            <dl class="mt-5 divide-y divide-edge text-sm">
+              <div class="flex items-baseline justify-between gap-4 py-3">
+                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">TELEFONE</dt>
+                <dd class="text-ink">(85) 99162-2619</dd>
+              </div>
+              <div class="flex items-baseline justify-between gap-4 py-3">
+                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">E-MAIL</dt>
+                <dd class="break-all text-right text-ink">mezon.servicos@gmail.com</dd>
+              </div>
+              <div class="flex items-baseline justify-between gap-4 py-3">
+                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">BASE</dt>
+                <dd class="text-ink">Fortaleza — CE</dd>
+              </div>
+              <div class="flex items-baseline justify-between gap-4 py-3">
+                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">ATENDIMENTO</dt>
+                <dd class="text-right text-ink">Remoto — todo o Brasil</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('lead-form') as HTMLFormElement | null;
+  const msg = document.getElementById('lead-msg') as HTMLParagraphElement | null;
+  const btn = document.getElementById('lead-submit') as HTMLButtonElement | null;
+  const btnText = document.getElementById('lead-submit-text');
+
+  function show(kind: 'ok' | 'erro', text: string) {
+    if (!msg) return;
+    msg.textContent = text;
+    msg.classList.remove('hidden');
+    msg.style.borderColor = kind === 'ok' ? '#46d39a' : '#ff5f56';
+    msg.style.color = kind === 'ok' ? '#46d39a' : '#ff5f56';
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    const data = new FormData(form);
+    if (data.get('botcheck')) return; // bot
+
+    btn && (btn.disabled = true);
+    btnText && (btnText.textContent = 'Enviando…');
+    msg?.classList.add('hidden');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      const out = await res.json();
+
+      if (res.ok && out.success) {
+        form.reset();
+        show('ok', 'Recebido. Respondemos em até 24h úteis no e-mail e no WhatsApp informados.');
+        (window as any).dataLayer?.push({ event: 'lead_enviado' });
+      } else {
+        show('erro', 'Não foi possível enviar agora. Chame no WhatsApp (85) 99162-2619 que respondemos direto.');
+      }
+    } catch {
+      show('erro', 'Falha de conexão. Chame no WhatsApp (85) 99162-2619 que respondemos direto.');
+    } finally {
+      btn && (btn.disabled = false);
+      btnText && (btnText.textContent = 'Enviar solicitação');
+    }
+  });
+</script>

@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# backup local do redesign (o histórico do git já cobre isso)
+src.backup-*/

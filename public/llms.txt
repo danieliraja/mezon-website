@@ -1,0 +1,48 @@
+# Mezon
+
+> Empresa de desenvolvimento de software em Fortaleza-CE que constrói sistemas
+> web sob medida, automação de atendimento com inteligência artificial e
+> integrações entre sistemas. Atende todo o Brasil de forma remota.
+
+## Serviços
+
+- **Sistemas web sob medida**: aplicações construídas sobre o processo real da
+  empresa — ERPs, portais e sistemas de gestão, com múltiplos perfis de acesso,
+  painéis de indicadores e integração com ERPs, CRMs e sistemas financeiros.
+- **Automação e atendimento com IA**: assistentes no WhatsApp que respondem a
+  partir dos documentos e regras do próprio cliente (RAG), agentes que executam
+  tarefas dentro do sistema e repasse para atendente humano quando necessário.
+- **Integrações e sistemas legados**: APIs REST, webhooks, sincronização entre
+  plataformas, filas e processamento assíncrono, integração com sistemas
+  legados sem necessidade de reescrita.
+- **Sites institucionais**: sites rápidos, com SEO técnico e dados estruturados,
+  construídos para gerar contato.
+
+## Tecnologias
+
+Angular, React, NestJS, Node.js, TypeScript, PostgreSQL, SQL Server, MongoDB,
+Redis, RabbitMQ, Docker, Kubernetes. Em IA: integração de LLMs, agentes com uso
+de ferramentas, RAG com embeddings e base vetorial.
+
+## Como trabalha
+
+Diagnóstico inicial sem custo, proposta com escopo fechado (valor e prazo
+definidos), entregas parciais para validação durante o desenvolvimento e
+suporte com evolução contínua após a entrega. O código do sistema desenvolvido
+pertence ao cliente, conforme contrato.
+
+## Contato
+
+- Site: https://mezon.com.br
+- E-mail: mezon.servicos@gmail.com
+- WhatsApp: +55 85 99162-2619
+- Base: Fortaleza, Ceará, Brasil
+- Atendimento: remoto para todo o Brasil; presencial na Grande Fortaleza
+
+## Páginas
+
+- [Início](https://mezon.com.br/): visão geral, serviços e perguntas frequentes
+- [Serviços](https://mezon.com.br/servicos): detalhamento das quatro frentes
+- [Contato](https://mezon.com.br/contato): formulário de orçamento
+- [Privacidade](https://mezon.com.br/privacidade)
+- [Termos](https://mezon.com.br/termos)

@@ -1,325 +1,318 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import Faq from '../components/Faq.astro';
 
 const whatsappLink =
-  'https://wa.me/558591622619?text=Ol%C3%A1%20Mezon%2C%20quero%20um%20or%C3%A7amento%20para%20desenvolvimento%20de%20sistemas%20e%20sites.';
+  'https://wa.me/558591622619?text=' +
+  encodeURIComponent('Olá Mezon, quero um orçamento para desenvolvimento de sistemas.');
 
 const services = [
   {
-    title: 'Desenvolvimento de sistemas web',
+    code: 'S-01',
+    title: 'Sistemas web sob medida',
     description:
-      'Aplicações sob medida para organizar operações, automatizar processos e acompanhar indicadores importantes para o seu negócio.',
-    benefits: [
-      'Fluxos personalizados que acompanham o dia a dia da sua empresa',
-      'Integração com ERPs, CRMs e ferramentas financeiras',
+      'Aplicações construídas para a sua operação: organizam processos, eliminam planilha paralela e mostram o que está acontecendo em tempo real.',
+    items: [
+      'Fluxos desenhados sobre a sua rotina real',
+      'Integração com ERPs, CRMs e financeiro',
       'Painéis de indicadores em tempo real',
-      'Acesso seguro, multiusuário e escalável na nuvem',
-      'Monitoramento contínuo para garantir disponibilidade',
+      'Acesso multiusuário, seguro e escalável',
     ],
   },
   {
-    title: 'Criação de chatbots inteligentes',
+    code: 'S-02',
+    title: 'Automação e atendimento com IA',
     description:
-      'Chatbots conectados ao WhatsApp e ao seu site para dar suporte, captar leads e vender mesmo fora do horário comercial.',
-    benefits: [
-      'Atendimento automático 24 horas por dia',
-      'Integração com planilhas, CRM ou sistemas já utilizados',
-      'Fluxos conversacionais orientados a vendas e suporte',
-      'Envio de notificações, lembretes e catálogo de produtos',
-      'Relatórios para acompanhar atendimentos e oportunidades',
+      'Atendimento por WhatsApp com inteligência artificial, respondendo com base nos seus próprios documentos e executando tarefas dentro do seu sistema.',
+    items: [
+      'Respostas geradas a partir da sua base de conhecimento',
+      'Agentes que consultam e executam no seu sistema',
+      'Atendimento fora do horário comercial',
+      'Repasse para humano quando o caso exige',
     ],
+    featured: true,
   },
   {
-    title: 'Criação de websites institucionais',
+    code: 'S-03',
+    title: 'Integrações e sistemas legados',
     description:
-      'Sites profissionais com foco em gerar credibilidade e conversão, preparados para SEO regional e acessíveis em qualquer dispositivo.',
-    benefits: [
-      'Estrutura planejada para SEO em Fortaleza e outras cidades',
-      'Layout responsivo, leve e otimizado para mobile',
-      'Integração com WhatsApp, formulários e ferramentas de marketing',
-      'Domínio grátis no primeiro ano para novos projetos',
-      'Painel simples para atualizar conteúdos quando precisar',
+      'Conectamos o que hoje não conversa: plataformas de terceiros, APIs externas e aquele sistema antigo que ninguém quer substituir.',
+    items: [
+      'APIs REST e webhooks',
+      'Integração com sistemas legados sem reescrita',
+      'Sincronização entre plataformas',
+      'Filas e processamento assíncrono',
     ],
   },
 ];
 
 const differentiators = [
   {
-    title: 'Projeto realmente personalizado',
+    title: 'Projeto sob medida, não pacote',
     description:
-      'Entendemos a rotina da sua empresa para desenhar soluções sob medida, sem pacotes engessados ou promessas vazias.',
-    icon: 'puzzle',
+      'Entendemos a rotina da empresa antes de propor solução. Sem template engessado e sem escopo genérico.',
   },
   {
-    title: 'Integração com o que você já usa',
+    title: 'Integra com o que você já usa',
     description:
-      'Conectamos sistemas, planilhas e plataformas existentes para evitar retrabalho e manter seus dados centralizados.',
-    icon: 'link',
+      'Conectamos sistemas, planilhas e plataformas existentes para evitar retrabalho e manter os dados em um lugar só.',
   },
   {
     title: 'Suporte e evolução contínua',
     description:
-      'Acompanhamos o desempenho após a entrega, aplicando melhorias e garantindo que tudo continue funcionando.',
-    icon: 'support',
+      'Acompanhamos depois da entrega. Sistema em produção precisa de manutenção, não de abandono.',
   },
 ];
 
 const steps = [
+  { n: '01', title: 'Diagnóstico',        d: 'Entendemos objetivos, processos e o que já está em uso.' },
+  { n: '02', title: 'Proposta',           d: 'Escopo claro, investimento e prazo — sem letra miúda.' },
+  { n: '03', title: 'Kickoff',            d: 'Cronograma, integrações necessárias e responsáveis dos dois lados.' },
+  { n: '04', title: 'Design e protótipo', d: 'Validamos fluxo e experiência antes de escrever código.' },
+  { n: '05', title: 'Desenvolvimento',    d: 'Implementação com entregas parciais para você acompanhar.' },
+  { n: '06', title: 'Entrega e suporte',  d: 'Publicação, treinamento e monitoramento dos primeiros resultados.' },
+];
+
+/*
+  SEGMENTOS ATENDIDOS.
+  Quando os nomes dos clientes reais forem definidos, trocar este bloco por
+  cases nominais (cliente + problema + resultado) — converte muito mais.
+*/
+const segments = [
+  { t: 'Condomínios e imobiliárias', d: 'Plataformas de relacionamento com moradores e gestão de rotinas.' },
+  { t: 'Varejo e franquias',         d: 'Automação de vendas e atendimento conectado ao WhatsApp.' },
+  { t: 'Clínicas e consultórios',    d: 'Agendamento online integrado aos sistemas existentes.' },
+  { t: 'Educação e cursos',          d: 'Portais de conteúdo e suporte automatizado a alunos.' },
+  { t: 'Serviços corporativos',      d: 'Sistemas de gestão de projetos, contratos e processos.' },
+  { t: 'Eventos',                    d: 'Sites institucionais com venda e controle de ingressos.' },
+];
+
+/* FAQ: responde objeção real de cliente e alimenta busca + assistentes de IA.
+   Se você quiser divulgar faixa de investimento, é aqui que ela converte mais. */
+const faq = [
   {
-    title: 'Diagnóstico inicial',
-    description: 'Conversamos para entender objetivos, processos e tecnologias já utilizadas.',
+    q: 'Quanto custa desenvolver um sistema sob medida?',
+    a: 'O investimento depende do escopo: quantos processos o sistema cobre, quais integrações precisa e o prazo desejado. Fazemos um diagnóstico sem custo e devolvemos uma proposta com escopo fechado, valor e prazo — sem cobrança por hora aberta e sem surpresa no meio do projeto.',
   },
   {
-    title: 'Proposta sob medida',
-    description: 'Apresentamos escopo claro, investimento e prazos alinhados ao seu cenário.',
+    q: 'Quanto tempo leva para ficar pronto?',
+    a: 'Um sistema focado em um processo específico costuma ir ao ar em poucas semanas. Plataformas com vários módulos e integrações levam mais. Trabalhamos com entregas parciais: você acompanha e valida durante o desenvolvimento, em vez de esperar meses para ver o resultado.',
   },
   {
-    title: 'Kickoff e planejamento',
-    description: 'Definimos cronograma, integrações necessárias e responsáveis de cada lado.',
+    q: 'Vocês integram com o sistema que eu já uso?',
+    a: 'Sim — é uma das nossas frentes principais. Integramos com ERPs, CRMs, plataformas financeiras e sistemas legados, inclusive aqueles antigos que não podem ser substituídos. Quando existe API, usamos a API; quando não existe, avaliamos o caminho viável para os dados fluírem sem digitação dupla.',
   },
   {
-    title: 'Design e prototipação',
-    description: 'Validamos a experiência, fluxos de navegação e identidade visual antes do código.',
+    q: 'Como funciona o atendimento com inteligência artificial no WhatsApp?',
+    a: 'Conectamos sua conta ao WhatsApp Business API oficial e configuramos um assistente que responde com base nos seus próprios documentos e regras — não em respostas genéricas de internet. Ele também executa tarefas dentro do seu sistema, como consultar um dado ou registrar uma solicitação, e passa para um atendente humano quando o caso exige.',
   },
   {
-    title: 'Desenvolvimento e integrações',
-    description: 'Implementamos com boas práticas, automações e integrações com o que você já utiliza.',
+    q: 'Qual a diferença entre sistema sob medida e sistema pronto?',
+    a: 'Sistema pronto obriga sua empresa a mudar o processo para caber na ferramenta, e cobra mensalidade por usuário para sempre. Sistema sob medida é construído sobre o processo que já funciona no seu negócio, integra com o que você usa e não tem funcionalidade sobrando que ninguém abre. Faz sentido quando a operação tem regra própria que o software de prateleira não cobre.',
   },
   {
-    title: 'Entrega, publicação e suporte',
-    description: 'Realizamos treinamentos, publicamos o projeto e monitoramos os primeiros resultados.',
+    q: 'Vocês atendem empresas fora de Fortaleza?',
+    a: 'Sim. Somos de Fortaleza-CE e atendemos clientes em todo o Brasil de forma remota, com reuniões online e acompanhamento contínuo do projeto. Para empresas da Grande Fortaleza, também fazemos encontros presenciais quando o projeto pede.',
+  },
+  {
+    q: 'Depois que o sistema entra no ar, existe suporte?',
+    a: 'Sim. Sistema em produção precisa de manutenção — correções, ajustes de regra de negócio e evolução conforme a empresa muda. Acompanhamos depois da entrega, com treinamento da equipe e monitoramento dos primeiros resultados.',
+  },
+  {
+    q: 'Quem fica dono do código do sistema?',
+    a: 'O código do sistema desenvolvido é do cliente, conforme definido em contrato. Você não fica preso a nós para continuar evoluindo o que foi construído.',
   },
 ];
 
-const clientHighlights = [
-  {
-    title: 'Varejo e franquias locais',
-    description: 'Automação de vendas e atendimento conectado ao WhatsApp.',
+const SITE = 'https://mezon.com.br';
+
+const serviceSchemas = services.map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: s.title,
+  description: s.description,
+  serviceType: s.title,
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: [
+    { '@type': 'City', name: 'Fortaleza' },
+    { '@type': 'Country', name: 'Brasil' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: s.title,
+    itemListElement: s.items.map((i) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: i },
+    })),
   },
-  {
-    title: 'Clínicas e consultórios',
-    description: 'Agendamento online integrado com sistemas existentes.',
-  },
-  {
-    title: 'Educação e cursos',
-    description: 'Portais de conteúdo e chatbots para suporte a alunos.',
-  },
-  {
-    title: 'Serviços corporativos',
-    description: 'Sistemas web para gestão de projetos e contratos.',
-  },
-  {
-    title: 'Eventos e entretenimento',
-    description: 'Websites institucionais com venda de ingressos integrada.',
-  },
-  {
-    title: 'Condomínios e imobiliárias',
-    description: 'Plataformas para relacionamento com moradores e leads.',
-  },
-];
+}));
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
-<Layout title="Mezon — Desenvolvimento de sistemas, sites e chatbots">
+
+<Layout
+  title="Mezon — Sistemas sob medida e automação com IA | Fortaleza-CE"
+  description="Desenvolvimento de sistemas web sob medida, automação de atendimento com inteligência artificial e integração entre sistemas. Fortaleza-CE, atendimento remoto para todo o Brasil."
+  path="/"
+  schemas={[...serviceSchemas, faqSchema]}
+>
   <Hero />
 
-  <section class="mx-auto max-w-6xl px-6">
-    <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 px-6 py-5 sm:flex sm:items-center sm:justify-between sm:px-8">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Oferta vigente</p>
-        <h2 class="mt-2 text-xl font-semibold text-white">Domínio grátis no primeiro ano para seu novo site institucional</h2>
-        <p class="mt-1 text-sm text-slate-300">Aproveite para lançar seu projeto com presença profissional e suporte completo.</p>
-      </div>
-      <a
-        href={whatsappLink}
-        class="mt-4 inline-flex items-center justify-center rounded-full bg-[#00a7f5] px-6 py-3 text-sm font-semibold text-[#0d1529] shadow-lg shadow-[#00111f]/40 transition hover:bg-[#26b9ff] sm:mt-0"
-        rel="noreferrer"
-        target="_blank"
-      >
-        Quero saber mais
-      </a>
-    </div>
-  </section>
-
-  <section id="servicos" class="mx-auto mt-20 max-w-6xl px-6">
-    <div class="md:flex md:items-end md:justify-between">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Serviços</p>
-        <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Serviços de desenvolvimento de sistemas e sites sob medida</h2>
-        <p class="mt-3 max-w-2xl text-slate-300">
-          Combinamos estratégia, tecnologia e atendimento próximo para entregar soluções que aumentam vendas e otimizam processos de pequenas empresas.
-        </p>
-      </div>
-      <a
-        href={whatsappLink}
-        class="mt-8 inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition hover:border-[#00a7f5]/60 hover:text-[#00a7f5] md:mt-0"
-        rel="noreferrer"
-        target="_blank"
-      >
-        Agendar conversa
-      </a>
-    </div>
-
-    <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {services.map((service) => (
-        <article class="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-8 shadow-lg shadow-[#00111f]/20 transition hover:border-[#00a7f5]/60">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#00a7f5]/15 text-[#00a7f5]">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
-            </svg>
-          </div>
-          <h3 class="mt-6 text-xl font-semibold text-white">{service.title}</h3>
-          <p class="mt-3 text-sm text-slate-300">{service.description}</p>
-          <ul class="mt-6 space-y-2 text-sm text-slate-300">
-            {service.benefits.map((benefit) => (
-              <li class="flex items-start gap-2">
-                <span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-[#00a7f5]"></span>
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section id="porque" class="mx-auto mt-24 max-w-6xl px-6">
-    <div class="md:flex md:items-center md:justify-between">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Por que escolher a Mezon</p>
-        <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Tecnologia de confiança para pequenas empresas em Fortaleza</h2>
-        <p class="mt-3 max-w-2xl text-slate-300">
-          Cada projeto recebe um plano personalizado, com integrações necessárias e acompanhamento próximo após o lançamento.
-        </p>
-      </div>
-    </div>
+  <!-- ================= SERVIÇOS ================= -->
+  <section id="servicos" class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <p class="label"><span class="label-num">02</span> Serviços</p>
+    <h2 class="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink md:text-4xl">
+      Três frentes para tirar sua operação do improviso
+    </h2>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-2">
+      Da construção do sistema à automação do atendimento, passando pela integração
+      com o que já existe na empresa.
+    </p>
 
     <div class="mt-12 grid gap-6 md:grid-cols-3">
-      {differentiators.map((item) => (
-        <article class="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-lg shadow-[#00111f]/20">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#00a7f5]/15 text-[#00a7f5]">
-            {item.icon === 'puzzle' && (
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.094A1.5 1.5 0 0112 4.5a1.5 1.5 0 012.406-1.406 1.5 1.5 0 112.094 2.094A1.5 1.5 0 0117.5 9a1.5 1.5 0 012.406 1.406 1.5 1.5 0 11-2.094 2.094A1.5 1.5 0 0115 12a1.5 1.5 0 01-1.406 2.406 1.5 1.5 0 11-2.094 2.094A1.5 1.5 0 019 15a1.5 1.5 0 01-2.406 1.406 1.5 1.5 0 11-2.094-2.094A1.5 1.5 0 016.5 12a1.5 1.5 0 01-2.406-1.406 1.5 1.5 0 112.094-2.094A1.5 1.5 0 019 9a1.5 1.5 0 01.594-5.906z" />
-              </svg>
-            )}
-            {item.icon === 'link' && (
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 010 5.656l-3 3a4 4 0 11-5.656-5.656l1.5-1.5" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10.172 13.828a4 4 0 010-5.656l3-3a4 4 0 115.656 5.656l-1.5 1.5" />
-              </svg>
-            )}
-            {item.icon === 'support' && (
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18 10V7a6 6 0 10-12 0v3m-2 4h16m-4 6H8a4 4 0 01-4-4v-2h16v2a4 4 0 01-4 4z" />
-              </svg>
-            )}
+      {services.map((s) => (
+        <article class={`panel ${s.featured ? 'panel-hot' : ''}`}>
+          <div class="panel-in flex h-full flex-col p-7">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs tracking-[.18em] text-ink-3">{s.code}</span>
+              {s.featured && (
+                <span class="font-mono text-[.65rem] uppercase tracking-[.18em] text-amber">Destaque</span>
+              )}
+            </div>
+
+            <h3 class="mt-5 text-xl font-semibold leading-snug text-ink">{s.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink-2">{s.description}</p>
+
+            <div class="mt-6 rule"><i></i><i></i><i></i></div>
+
+            <ul class="mt-5 space-y-2.5 text-sm text-ink-2">
+              {s.items.map((i) => (
+                <li class="flex gap-3">
+                  <span class="mt-[.45rem] h-px w-3 shrink-0 bg-amber"></span>
+                  <span>{i}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href="/contato" class="mt-auto pt-7 font-mono text-xs uppercase tracking-[.16em] text-amber transition-colors hover:text-amber-ink">
+              Solicitar orçamento →
+            </a>
           </div>
-          <h3 class="mt-6 text-xl font-semibold text-white">{item.title}</h3>
-          <p class="mt-3 text-sm text-slate-300">{item.description}</p>
         </article>
       ))}
     </div>
   </section>
 
-  <section id="processo" class="mx-auto mt-24 max-w-6xl px-6">
-    <div class="md:flex md:items-center md:justify-between">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Como funciona</p>
-        <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Passo a passo para tirar seu projeto digital do papel</h2>
-        <p class="mt-3 max-w-2xl text-slate-300">
-          Trabalhamos em ciclos curtos, com comunicação transparente e entregas validadas em cada fase.
-        </p>
+  <!-- ================= DIFERENCIAIS ================= -->
+  <section id="porque" class="border-y border-edge bg-void">
+    <div class="mx-auto max-w-6xl px-5 py-20 md:py-24">
+      <p class="label"><span class="label-num">03</span> Por que a Mezon</p>
+      <h2 class="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink md:text-4xl">
+        Tecnologia que continua funcionando depois da entrega
+      </h2>
+
+      <div class="mt-12 grid gap-10 md:grid-cols-3">
+        {differentiators.map((d, i) => (
+          <div>
+            <span class="index-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-4 text-lg font-semibold text-ink">{d.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink-2">{d.description}</p>
+          </div>
+        ))}
       </div>
     </div>
+  </section>
 
-    <ol class="mt-12 grid gap-6 md:grid-cols-3">
-      {steps.map((step, index) => (
-        <li class="relative rounded-3xl border border-white/10 bg-white/5 p-8 shadow-lg shadow-[#00111f]/20">
-          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#00a7f5]/15 text-base font-semibold text-[#00a7f5]">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <h3 class="mt-6 text-lg font-semibold text-white">{step.title}</h3>
-          <p class="mt-3 text-sm text-slate-300">{step.description}</p>
+  <!-- ================= PROCESSO ================= -->
+  <section id="processo" class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <p class="label"><span class="label-num">04</span> Processo</p>
+    <h2 class="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink md:text-4xl">
+      Do primeiro contato ao sistema no ar
+    </h2>
+
+    <ol class="mt-12 grid gap-px bg-edge md:grid-cols-3">
+      {steps.map((s) => (
+        <li class="bg-base p-7">
+          <span class="font-mono text-sm tracking-[.18em] text-amber">{s.n}</span>
+          <h3 class="mt-3 text-lg font-semibold text-ink">{s.title}</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-2">{s.d}</p>
         </li>
       ))}
     </ol>
   </section>
 
-  <section id="clientes" class="mx-auto mt-24 max-w-6xl px-6">
-    <div class="md:flex md:items-center md:justify-between">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Empresas atendidas</p>
-        <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Negócios que confiam na Mezon para evoluir online</h2>
-        <p class="mt-3 max-w-2xl text-slate-300">
-          Atuamos junto a empresas locais e clientes atendidos remotamente, sempre com foco em resultados mensuráveis e suporte próximo.
-        </p>
+  <!-- ================= SEGMENTOS ================= -->
+  <section id="clientes" class="border-y border-edge bg-void">
+    <div class="mx-auto max-w-6xl px-5 py-20 md:py-24">
+      <p class="label"><span class="label-num">05</span> Onde atuamos</p>
+      <h2 class="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink md:text-4xl">
+        Segmentos que já operam com sistemas que construímos
+      </h2>
+
+      <div class="mt-12 grid gap-px bg-edge sm:grid-cols-2 lg:grid-cols-3">
+        {segments.map((c) => (
+          <div class="bg-void p-6">
+            <h3 class="text-base font-semibold text-ink">{c.t}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-2">{c.d}</p>
+          </div>
+        ))}
       </div>
     </div>
-
-    <div class="mt-12 grid gap-6 md:grid-cols-3">
-      {clientHighlights.map((client) => (
-        <article class="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-300 shadow-lg shadow-[#00111f]/20">
-          <h3 class="text-base font-semibold text-white">{client.title}</h3>
-          <p class="mt-2">{client.description}</p>
-          <span class="mt-4 inline-flex w-fit items-center rounded-full border border-white/15 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-[#00a7f5]">
-            Fortaleza e online
-          </span>
-        </article>
-      ))}
-    </div>
-    <p class="mt-6 text-xs text-slate-500">
-      *Atualize esta lista com as empresas citadas no documento original para reforçar sua prova social.
-    </p>
   </section>
 
-  <section id="contato" class="mx-auto mt-24 max-w-6xl px-6 pb-24">
-    <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-[#0d1529] to-[#050915] p-10 shadow-2xl shadow-[#00111f]/40 md:p-16">
-      <div class="md:flex md:items-center md:justify-between">
-        <div class="max-w-2xl">
-          <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Pronto para começar?</p>
-          <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Solicite um orçamento e receba um plano de ação personalizado</h2>
-          <p class="mt-3 text-slate-300">
-            Responderemos em até um dia útil com os próximos passos. Se preferir, chame direto no WhatsApp ou envie um e-mail para compartilhar suas necessidades.
-          </p>
-          <div class="mt-8 flex flex-col gap-3 text-sm text-slate-200 md:flex-row md:items-center">
-            <a
-              href={whatsappLink}
-              class="inline-flex items-center justify-center rounded-full bg-[#00a7f5] px-6 py-3 text-sm font-semibold text-[#0d1529] shadow-lg shadow-[#00111f]/40 transition hover:bg-[#26b9ff]"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Falar no WhatsApp
-            </a>
-            <a
-              href="mailto:mezon.servicos@gmail.com"
-              class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#00a7f5]/60 hover:text-[#00a7f5]"
-            >
-              Enviar e-mail
-            </a>
+  <Faq items={faq} />
+
+  <!-- ================= CTA FINAL ================= -->
+  <section id="contato" class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <div class="panel panel-hot brackets">
+      <div class="panel-in px-7 py-14 md:px-16 md:py-16">
+        <div class="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+          <div>
+            <p class="label"><span class="label-num">07</span> Próximo passo</p>
+            <h2 class="mt-6 text-3xl font-bold leading-tight tracking-tight text-ink md:text-4xl">
+              Descreva o problema. Devolvemos um plano de ação.
+            </h2>
+            <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-2">
+              Sem compromisso e sem catálogo genérico: analisamos seu cenário e
+              apontamos o caminho mais curto entre o problema de hoje e o sistema
+              que resolve.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="/contato" class="btn btn-primary">Solicitar orçamento</a>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
+                 class="btn btn-ghost" data-evt="whatsapp-cta">
+                <span>Falar no WhatsApp</span>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="mt-12 grid gap-6 text-sm text-slate-300 md:mt-0">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Contato</p>
-            <a href={whatsappLink} rel="noreferrer" target="_blank" class="mt-3 flex items-center gap-2 text-white hover:text-[#00a7f5]">
-              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20.52 3.48A11.8 11.8 0 0012.04 0C5.53 0 .23 5.3.23 11.82c0 2.08.54 4.12 1.58 5.92L0 24l6.4-1.75a11.86 11.86 0 005.64 1.44h.01c6.52 0 11.82-5.3 11.82-11.82a11.78 11.78 0 00-3.35-8.39z" />
-              </svg>
-              +55 85 9162-2619
-            </a>
-            <a href="mailto:mezon.servicos@gmail.com" class="mt-2 flex items-center gap-2 hover:text-[#00a7f5]">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              mezon.servicos@gmail.com
-            </a>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[#00a7f5]">Atendimento</p>
-            <p class="mt-3">Fortaleza, Ceará — atendemos online todo o Brasil.</p>
-            <p class="mt-2">Segunda a sexta, 9h às 18h.</p>
-          </div>
+
+          <dl class="divide-y divide-edge border-l border-edge pl-8">
+            <div class="flex items-baseline justify-between gap-4 py-3.5">
+              <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">RESPOSTA</dt>
+              <dd class="text-sm text-ink">Até 24h úteis</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 py-3.5">
+              <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">DIAGNÓSTICO</dt>
+              <dd class="text-sm text-ink">Sem custo</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 py-3.5">
+              <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">ATENDIMENTO</dt>
+              <dd class="text-sm text-ink">Todo o Brasil</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 py-3.5">
+              <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">BASE</dt>
+              <dd class="text-sm text-ink">Fortaleza — CE</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
