@@ -23,6 +23,10 @@ const {
 } = Astro.props;
 
 const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
+
+// GA4 — defina PUBLIC_GA_ID no .env (formato G-XXXXXXXXXX).
+// Sem a variável, nada é carregado: o site não chama o Google em dev.
+const gaId = import.meta.env.PUBLIC_GA_ID;
 const canonical = `${site}${path === '/' ? '' : path}`;
 const ogImage = `${site}/og-mezon.png`;
 
@@ -129,7 +133,7 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <meta name="theme-color" content="#0b0d10" />
+    <meta name="theme-color" content="#070b16" />
     <meta name="author" content="Mezon" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -142,12 +146,34 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
     {allSchemas.map((schema) => (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}
+
+    {gaId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+        <script
+          is:inline
+          set:html={`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'granted'
+            });
+            gtag('config', '${gaId}', { anonymize_ip: true });
+          `}
+        />
+      </>
+    )}
   </head>
 
   <body class="hud-bg min-h-screen">
     <a
       href="#conteudo"
-      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-amber focus:px-4 focus:py-2 focus:text-base"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-base"
     >
       Pular para o conteúdo
     </a>
@@ -155,8 +181,7 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
     <header class="sticky top-0 z-40 border-b border-edge bg-base/92 backdrop-blur-sm">
       <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <a href="/" class="flex items-center gap-3" aria-label="Mezon — página inicial">
-          <span class="grid h-8 w-8 place-items-center bg-amber font-mono text-base font-bold text-base"
-                style="clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px)">M</span>
+          <svg viewBox="0 0 120 120" class="h-8 w-8" fill="none" aria-hidden="true"><path d="M20 100V28l40 42" stroke="#00baff" stroke-width="15" stroke-linejoin="miter"/><path d="M60 70l40-42v72" stroke="currentColor" stroke-width="15" stroke-linejoin="miter"/><rect x="52" y="62" width="16" height="16" fill="#00baff"/></svg>
           <span class="font-mono text-sm tracking-[.28em] text-ink">MEZON</span>
         </a>
 
@@ -164,7 +189,7 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
           {navigation.map((item) => (
             <a
               href={item.href}
-              class="font-mono text-xs uppercase tracking-[.18em] text-ink-2 transition-colors hover:text-amber"
+              class="font-mono text-xs uppercase tracking-[.18em] text-ink-2 transition-colors hover:text-accent"
             >
               {item.label}
             </a>
@@ -190,10 +215,13 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
         <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <div class="flex items-center gap-3">
-              <span class="grid h-8 w-8 place-items-center bg-amber font-mono text-base font-bold text-base"
-                    style="clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px)">M</span>
-              <span class="font-mono text-sm tracking-[.28em] text-ink">MEZON</span>
+              <svg viewBox="0 0 120 120" class="h-8 w-8" fill="none" aria-hidden="true"><path d="M20 100V28l40 42" stroke="#00baff" stroke-width="15" stroke-linejoin="miter"/><path d="M60 70l40-42v72" stroke="currentColor" stroke-width="15" stroke-linejoin="miter"/><rect x="52" y="62" width="16" height="16" fill="#00baff"/></svg>
+              <div>
+                <span class="block font-mono text-sm leading-none tracking-[.28em] text-ink">MEZON</span>
+                <span class="mt-1.5 block font-mono text-[.62rem] uppercase leading-none tracking-[.22em] text-ink-3">Sistemas sob medida</span>
+              </div>
             </div>
+            <p class="mt-5 font-mono text-xs uppercase tracking-[.16em] text-accent">A gente constrói junto</p>
             <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-2">
               Desenvolvimento de sistemas sob medida e automação com inteligência artificial
               para empresas que querem parar de operar no improviso.
@@ -205,10 +233,10 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
             <p class="font-mono text-xs uppercase tracking-[.2em] text-ink-3">Navegação</p>
             <ul class="mt-4 space-y-2.5 text-sm text-ink-2">
               {navigation.map((item) => (
-                <li><a href={item.href} class="transition-colors hover:text-amber">{item.label}</a></li>
+                <li><a href={item.href} class="transition-colors hover:text-accent">{item.label}</a></li>
               ))}
-              <li><a href="/privacidade" class="transition-colors hover:text-amber">Privacidade</a></li>
-              <li><a href="/termos" class="transition-colors hover:text-amber">Termos</a></li>
+              <li><a href="/privacidade" class="transition-colors hover:text-accent">Privacidade</a></li>
+              <li><a href="/termos" class="transition-colors hover:text-accent">Termos</a></li>
             </ul>
           </div>
 
@@ -216,8 +244,8 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
             <p class="font-mono text-xs uppercase tracking-[.2em] text-ink-3">Contato</p>
             <ul class="mt-4 space-y-2.5 text-sm text-ink-2">
               <li><a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-                     class="transition-colors hover:text-amber" data-evt="whatsapp-footer">(85) 99162-2619</a></li>
-              <li><a href="mailto:mezon.servicos@gmail.com" class="transition-colors hover:text-amber">
+                     class="transition-colors hover:text-accent" data-evt="whatsapp-footer">(85) 99162-2619</a></li>
+              <li><a href="mailto:mezon.servicos@gmail.com" class="transition-colors hover:text-accent">
                 mezon.servicos@gmail.com</a></li>
               <li class="text-ink-3">Fortaleza — CE</li>
               <li class="text-ink-3">Atendimento remoto para todo o Brasil</li>
@@ -242,5 +270,23 @@ const allSchemas = [orgSchema, siteSchema, breadcrumbSchema, ...schemas].filter(
     >
       Falar no WhatsApp
     </a>
+    <script is:inline>
+      // Rastreio de conversão: cada CTA já carrega data-evt.
+      // Se o GA não estiver configurado, isto simplesmente não faz nada.
+      document.addEventListener('click', function (e) {
+        var el = e.target instanceof Element ? e.target.closest('[data-evt]') : null;
+        if (!el || typeof window.gtag !== 'function') return;
+
+        var evt = el.getAttribute('data-evt') || '';
+        if (evt.indexOf('whatsapp') === 0) {
+          window.gtag('event', 'whatsapp_click', {
+            origem: evt.replace('whatsapp-', ''),
+            link_url: el.getAttribute('href') || '',
+          });
+        } else {
+          window.gtag('event', 'cta_click', { cta: evt });
+        }
+      });
+    </script>
   </body>
 </html>

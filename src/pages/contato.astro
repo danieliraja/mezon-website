@@ -98,10 +98,10 @@ const contactSchema = {
 
             <label class="flex items-start gap-3 text-sm text-ink-2">
               <input type="checkbox" name="consentimento" required
-                     class="mt-1 h-4 w-4 shrink-0 accent-[#ff8a1a]" />
+                     class="mt-1 h-4 w-4 shrink-0 accent-[#00baff]" />
               <span>
                 Autorizo a Mezon a usar meus dados para responder este contato,
-                conforme a <a href="/privacidade" class="text-amber underline underline-offset-2">Política de Privacidade</a>.
+                conforme a <a href="/privacidade" class="text-accent underline underline-offset-2">Política de Privacidade</a>.
               </span>
             </label>
 
@@ -122,7 +122,7 @@ const contactSchema = {
       <div class="space-y-6">
         <div class="panel panel-hot">
           <div class="panel-in p-7">
-            <p class="font-mono text-xs uppercase tracking-[.2em] text-amber">Resposta imediata</p>
+            <p class="font-mono text-xs uppercase tracking-[.2em] text-accent">Resposta imediata</p>
             <p class="mt-4 text-lg font-semibold text-ink">Prefere falar agora?</p>
             <p class="mt-2 text-sm leading-relaxed text-ink-2">
               Chame no WhatsApp. Normalmente respondemos em minutos durante o horário comercial.
@@ -139,19 +139,19 @@ const contactSchema = {
             <p class="font-mono text-xs uppercase tracking-[.2em] text-ink-3">Canais</p>
             <dl class="mt-5 divide-y divide-edge text-sm">
               <div class="flex items-baseline justify-between gap-4 py-3">
-                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">TELEFONE</dt>
+                <dt class="font-mono text-xs tracking-[.14em] text-ice">TELEFONE</dt>
                 <dd class="text-ink">(85) 99162-2619</dd>
               </div>
               <div class="flex items-baseline justify-between gap-4 py-3">
-                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">E-MAIL</dt>
+                <dt class="font-mono text-xs tracking-[.14em] text-ice">E-MAIL</dt>
                 <dd class="break-all text-right text-ink">mezon.servicos@gmail.com</dd>
               </div>
               <div class="flex items-baseline justify-between gap-4 py-3">
-                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">BASE</dt>
+                <dt class="font-mono text-xs tracking-[.14em] text-ice">BASE</dt>
                 <dd class="text-ink">Fortaleza — CE</dd>
               </div>
               <div class="flex items-baseline justify-between gap-4 py-3">
-                <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">ATENDIMENTO</dt>
+                <dt class="font-mono text-xs tracking-[.14em] text-ice">ATENDIMENTO</dt>
                 <dd class="text-right text-ink">Remoto — todo o Brasil</dd>
               </div>
             </dl>
@@ -198,7 +198,11 @@ const contactSchema = {
       if (res.ok && out.success) {
         form.reset();
         show('ok', 'Recebido. Respondemos em até 24h úteis no e-mail e no WhatsApp informados.');
-        (window as any).dataLayer?.push({ event: 'lead_enviado' });
+        // generate_lead é o evento recomendado do GA4 para captação
+        (window as any).gtag?.('event', 'generate_lead', {
+          tipo_projeto: String(data.get('tipo') ?? ''),
+          origem: 'formulario_contato',
+        });
       } else {
         show('erro', 'Não foi possível enviar agora. Chame no WhatsApp (85) 99162-2619 que respondemos direto.');
       }

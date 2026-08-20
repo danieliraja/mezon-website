@@ -14,8 +14,8 @@ const capabilities = [
 <section class="relative overflow-hidden border-b border-edge">
   <!-- linha diagonal técnica, no lugar dos blobs desfocados -->
   <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-    <div class="absolute -right-40 top-0 h-full w-[38rem] -skew-x-12 bg-amber/[0.045]"></div>
-    <div class="absolute right-[16rem] top-0 h-full w-px -skew-x-12 bg-amber/25"></div>
+    <div class="absolute -right-40 top-0 h-full w-[38rem] -skew-x-12 bg-primary/[0.045]"></div>
+    <div class="absolute right-[16rem] top-0 h-full w-px -skew-x-12 bg-primary/25"></div>
   </div>
 
   <div class="mx-auto grid max-w-6xl gap-14 px-5 py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-28">
@@ -24,7 +24,7 @@ const capabilities = [
 
       <h1 class="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-ink md:text-6xl">
         Sistemas sob medida e
-        <span class="text-amber">automação com IA</span>
+        <span class="text-accent">automação com IA</span>
         para empresas que cresceram além da planilha
       </h1>
 
@@ -51,17 +51,17 @@ const capabilities = [
     </div>
 
     <!-- painel de capacidades: ficha técnica, não card genérico -->
-    <div class="panel brackets">
+    <div class="panel">
       <div class="panel-in p-7">
         <div class="flex items-center justify-between">
-          <p class="font-mono text-xs uppercase tracking-[.2em] text-amber">Capacidades</p>
-          <span class="h-2.5 w-2.5 bg-amber"></span>
+          <p class="font-mono text-xs uppercase tracking-[.2em] text-accent">Capacidades</p>
+          <span class="h-2.5 w-2.5 bg-primary"></span>
         </div>
 
         <dl class="mt-6 divide-y divide-edge">
           {capabilities.map((c) => (
             <div class="flex items-baseline justify-between gap-4 py-3.5">
-              <dt class="font-mono text-xs tracking-[.14em] text-amber-ink">{c.k}</dt>
+              <dt class="font-mono text-xs tracking-[.14em] text-ice">{c.k}</dt>
               <dd class="text-right text-sm text-ink">{c.v}</dd>
             </div>
           ))}

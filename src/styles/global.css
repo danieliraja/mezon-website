@@ -14,23 +14,25 @@
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* superfícies */
-  --color-void:      #08090b;
-  --color-base:      #0b0d10;
-  --color-surface:   #101317;
-  --color-surface-2: #161a20;
-  --color-edge:      #23282f;
-  --color-edge-hot:  #3a3026;
+  /* superfícies — grafite azulado, derivado do navy da paleta */
+  --color-void:      #04070f;
+  --color-base:      #070b16;
+  --color-surface:   #0d1424;
+  --color-surface-2: #121b31;
+  --color-edge:      #1c2a4d;
+  --color-edge-hot:  #24407e;
 
-  /* destaque */
-  --color-amber:     #ff8a1a;
-  --color-amber-dim: #c26a12;
-  --color-amber-ink: #ffb765;
+  /* paleta da marca (Adobe Color) */
+  --color-navy:      #021757;
+  --color-deep:      #003698;
+  --color-primary:   #006dff;   /* blocos sólidos e CTA — SEMPRE com texto branco */
+  --color-accent:    #00baff;   /* rótulos, linhas, marcadores — texto sobre escuro */
+  --color-ice:       #98e9fd;   /* destaque de texto secundário */
 
   /* texto */
-  --color-ink:       #e6e9ee;
-  --color-ink-2:     #aeb6c2;
-  --color-ink-3:     #7d8794;
+  --color-ink:       #e8eef7;
+  --color-ink-2:     #a9b8d0;
+  --color-ink-3:     #7385a3;
 
   /* estado */
   --color-ok:        #46d39a;
@@ -52,10 +54,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  ::selection { background: var(--color-amber); color: #0b0d10; }
+  ::selection { background: var(--color-primary); color: #ffffff; }
 
   :focus-visible {
-    outline: 2px solid var(--color-amber);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 
@@ -105,14 +107,14 @@
     background: var(--color-surface);
     height: 100%;
   }
-  .panel:hover { background: var(--color-amber-dim); }
-  .panel-hot { background: var(--color-amber); }
+  .panel:hover { background: var(--color-edge-hot); }
+  .panel-hot { background: var(--color-primary); }
 
   /* ---- cantos de mira ---- */
   .brackets { position: relative; }
   .brackets::before, .brackets::after {
     content: ""; position: absolute; width: 14px; height: 14px;
-    border-color: var(--color-amber); pointer-events: none;
+    border-color: var(--color-accent); pointer-events: none;
   }
   /* o chanfro fica em cima-esq e baixo-dir, então os brackets vão nos
      cantos retos (cima-dir e baixo-esq) para não colidir com o corte */
@@ -124,7 +126,7 @@
     display: flex; align-items: center; gap: .75rem;
     font-family: var(--font-mono);
     font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
-    color: var(--color-amber);
+    color: var(--color-accent);
   }
   .label::after {
     content: ""; height: 1px; flex: 1;
@@ -148,8 +150,8 @@
   }
   .btn:active { transform: translateY(1px); }
 
-  .btn-primary { background: var(--color-amber); color: #0b0d10; }
-  .btn-primary:hover { background: var(--color-amber-ink); }
+  .btn-primary { background: var(--color-primary); color: #ffffff; }
+  .btn-primary:hover { background: #2f89ff; }
 
   .btn-ghost {
     background: var(--color-edge); color: var(--color-ink);
@@ -165,12 +167,12 @@
     padding: calc(.95rem - 1px) calc(1.9rem - 1px);
     width: 100%; height: 100%;
   }
-  .btn-ghost:hover { background: var(--color-amber); }
-  .btn-ghost:hover > span { color: var(--color-amber-ink); }
+  .btn-ghost:hover { background: var(--color-accent); }
+  .btn-ghost:hover > span { color: var(--color-accent); }
 
   /* ---- régua com marcadores ---- */
   .rule { display: flex; align-items: center; gap: 6px; }
-  .rule i { width: 9px; height: 6px; background: var(--color-amber); display: block; }
+  .rule i { width: 9px; height: 6px; background: var(--color-accent); display: block; }
   .rule i:nth-child(2) { opacity: .65; }
   .rule i:nth-child(3) { opacity: .35; }
   .rule::after {
@@ -197,7 +199,7 @@
   .field::placeholder { color: var(--color-ink-3); }
   .field:focus {
     outline: none;
-    border-color: var(--color-amber);
+    border-color: var(--color-accent);
     background: #0a0c0f;
   }
   .field-label {
