@@ -24,9 +24,11 @@ const {
 
 const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
 
-// GA4 — defina PUBLIC_GA_ID no .env (formato G-XXXXXXXXXX).
-// Sem a variável, nada é carregado: o site não chama o Google em dev.
-const gaId = import.meta.env.PUBLIC_GA_ID;
+// GA4. O ID de métricas é público (aparece no HTML), então fica no código —
+// mesma lógica da access key do formulário: evita quebrar a medição por
+// variável de ambiente esquecida no servidor. Defina PUBLIC_GA_ID no .env
+// para sobrescrever (ex.: propriedade separada de homologação).
+const gaId = import.meta.env.PUBLIC_GA_ID ?? 'G-S4G2Y3M2GR';
 const canonical = `${site}${path === '/' ? '' : path}`;
 const ogImage = `${site}/og-mezon.png`;
 

@@ -1,10 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Chave pública do Web3Forms. Crie a sua em https://web3forms.com (grátis,
-// basta informar o e-mail que vai receber os leads) e coloque em .env:
-//   PUBLIC_WEB3FORMS_KEY=sua-chave-aqui
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? 'COLE-SUA-ACCESS-KEY-AQUI';
+// Access key do Web3Forms. É pública por design — fica visível no HTML de
+// qualquer site que use o serviço, então não é segredo e não precisa de .env.
+// Deixar o valor aqui evita o formulário quebrar em produção por variável de
+// ambiente esquecida. Para trocar sem mexer no código, defina
+// PUBLIC_WEB3FORMS_KEY no .env que ela tem prioridade.
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? 'f8666e95-c3bc-4ec9-9368-eb1b51d5da16';
 
 const whatsappLink =
   'https://wa.me/558591622619?text=' +
